@@ -1,0 +1,23 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: shop-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shop-deployment
+  template:
+    metadata:
+      labels:
+        app: shop-deployment
+    spec:
+      containers:
+        - name: shop-deployment
+          image: eonuallain/microservices
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "125m"
+          ports:
+          - containerPort: 4000
